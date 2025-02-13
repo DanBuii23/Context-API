@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import UserProvider from "../contexts/userContext";
 import { Dashboard } from "./dashboard";
 import UserProfile from "./userProfile";
 import { ThemeContext } from "../contexts/themeContext";
@@ -12,12 +11,12 @@ export const UserApp = () => {
     changeTheme: () => {},
   };
   return (
-    <UserProvider>
+    <>
       <Header />
       <hr />
       <Dashboard />
       <UserProfile />
       <button onClick={themeContext?.changeTheme}>Đổi nền</button>
-    </UserProvider>
+    </>
   );
 };

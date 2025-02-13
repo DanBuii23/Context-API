@@ -1,16 +1,18 @@
 import { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
+import { AuthContext } from "../contexts/authContext";
 
 export const Dashboard = () => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error("Error");
-  }
-  const { user } = context;
+  const user = useContext(UserContext);
+  const authen = useContext(AuthContext);
 
   return (
     <div>
-      <h2 className="text-3xl justify-self-center">Welcome, {user}!</h2>
+      <h2>Welcome, {user?.age}!</h2>
+      <p>Status: {authen?.isAuthenticated ? "Logged In" : "Logged Out"}</p>
+      <button onClick={authen?.isAuthenticated ? authen.logout : authen?.login}>
+        {authen?.isAuthenticated ? "Logout" : "Login"}
+      </button>
     </div>
   );
 };
