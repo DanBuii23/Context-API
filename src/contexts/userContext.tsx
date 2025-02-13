@@ -1,11 +1,9 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, ReactNode } from "react";
 
 // Định nghĩa kiểu dữ liệu cho context
 interface UserContextType {
   user: string;
   age: number;
-  setAge: React.Dispatch<React.SetStateAction<number>>;
-  setUser: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // Khởi tạo UserContext với giá trị mặc định
@@ -18,11 +16,11 @@ interface UserProviderProps {
 }
 
 const UserProvider = ({ children }: UserProviderProps) => {
-  const [user, setUser] = useState<string>("Đan Bùi");
-  const [age, setAge] = useState<number>(23);
+  const user = "Đan Bùi";
+  const age = 18;
 
   return (
-    <UserContext.Provider value={{ user, setUser, age, setAge }}>
+    <UserContext.Provider value={{ user, age }}>
       {children}
     </UserContext.Provider>
   );

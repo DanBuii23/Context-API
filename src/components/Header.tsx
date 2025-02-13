@@ -1,13 +1,16 @@
 import { useContext } from "react";
+import { ThemeContext } from "../contexts/themeContext";
 import { UserContext } from "../contexts/userContext";
 
-const Header = () => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error("Error!");
-  }
-  const { user } = context;
+export const Header = () => {
+  const theme = useContext(ThemeContext);
+  const user = useContext(UserContext);
 
-  return <p className="text-3xl">Chúc {user} một ngày tốt lành!</p>;
+  return (
+    <div>
+      <p className={theme?.theme}>
+        Xin chào {user?.user} đã đến với chương trình
+      </p>
+    </div>
+  );
 };
-export default Header;
